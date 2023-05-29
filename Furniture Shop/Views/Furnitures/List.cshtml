@@ -1,0 +1,22 @@
+﻿@using Furniture_Shop.Data.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width-device-width"/>
+    <title>Furniture: @Model.CategoryName</title>
+</head>
+<body>
+<div>
+    <h2>@Model.CategoryName</h2>
+    <div class="row mt-5 mb-2">
+        @{
+            foreach (Furniture f in Model.AllFurniture){
+                @Html.Partial("AllFurniture", f)
+            }
+        }
+
+    </div>
+</div>
+</body>
+</html>

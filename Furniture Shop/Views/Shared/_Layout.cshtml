@@ -1,0 +1,125 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> _signInManager;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Furnitures</a>
+            <button class="navbar-toggler" type="button" data-bstoggle="collapse" data-bs-target="#navbarCollapse" ariacontrols="navbarCollapse" aria-expanded="false" aria-label="Toggle
+navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                 id="navbarCollapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                           href="/">
+                            Home page
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Furnitures/List/">
+                            All furnitures
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Furnitures/List/Sofas">
+                            Sofas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/Furnitures/List/Tables">
+                            Tables
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/ShoppingCart/">
+                            Shopping cart
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2"
+                           type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success"
+                            type="submit">
+                        Search
+                    </button>
+                </form>
+                <ul class="navbar-nav ml-auto">
+                    @if (!_signInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               href="/Account/Login">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               href="/Account/Register">
+                                Register
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <span class="nav-link active"
+                                  href="/">
+                                @User.Identity.Name
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               href="/Account/Logout">
+                                Logout
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+</header>
+
+<div class="container custom-container-body">
+    @RenderBody()
+</div>
+<footer class="container mt-5">
+    <p class="float-right">
+        <a href="#">Back to top</a>
+    </p>
+    <p>
+        © 2023 Non-commercial product. · <a href="#">Privacy</a> ·
+        <a
+            href="#">
+            Terms
+        </a>
+    </p>
+</footer>
+
+<script src="~/js/bootstrap.min.js"></script>
+
+</body>
+</html>

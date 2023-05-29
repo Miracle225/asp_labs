@@ -1,0 +1,23 @@
+﻿@model ShopCartViewModel
+<div class="container">
+    @foreach (var el in Model.ShopCart.ListShopItems)
+    {
+        <div class="alert-warning mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <b>Name:</b> @el.Furniture.Name<br/>
+                        <b>Price:</b> @el.Furniture.Price.ToString("c")
+                    </div>
+                    <div class="col">
+                        <img src="@el.Furniture.ImageURL" alt="el.Furniture.Name" class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+    <hr/>
+    <h3>Total: @Model.ShopCart.ListShopItems.Sum(i => i.Furniture.Price).ToString("c")</h3>
+    <a class="btn btn-danger m-5" asp-controller="Order" asp-action="Checkout">Pay</a>
+</div>

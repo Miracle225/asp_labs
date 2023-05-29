@@ -1,0 +1,9 @@
+﻿@if (Model.IsError)
+{
+    foreach (var error in Model.Errors)
+    {
+        <div class="bg-danger text-white rounded-1 p-3">
+            @error
+        </div>
+    }
+}

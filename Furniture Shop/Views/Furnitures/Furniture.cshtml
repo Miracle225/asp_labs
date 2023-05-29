@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width-device-width"/>
+</head>
+<body>
+<div>
+    <div class="row mt-5 mb-2">
+        @if (Model.IsNotFound)
+        {
+            <h2>Model you looking for is not found</h2>
+        }
+        else
+        {
+            <div class="container">
+                <div class="row">
+                    @Html.Partial("AllFurniture", (Furniture) Model.Furniture)    
+                    <div class="col">
+                        @Model.Furniture.FullDescription
+                    </div>                        
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+</body>
+</html>

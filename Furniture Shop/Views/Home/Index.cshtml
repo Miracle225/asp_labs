@@ -1,0 +1,9 @@
+﻿@model HomeViewModel
+<div class="row mt-5 mb-2">
+    <h1>Now on sale!</h1>
+    @{
+        foreach (Furniture f in Model.FurnitureOnSale){
+            @Html.Partial("AllFurniture", f)
+        }
+    }
+</div>

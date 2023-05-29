@@ -1,0 +1,28 @@
+﻿<div class="col-lg-4">
+    <h3>Name: @Model.Name</h3>
+    <p>Cathegory: @Model.Category.Name</p>
+    <p>Price: @Model.Price</p>
+    @if (Model.IsOnSale)
+    {
+        <div class="bg-danger text-white rounded-1 p-3">
+            Now on sale! The old price is <del>@Model.OldPrice</del>
+        </div>
+    }
+    <img src="@Model.ImageURL" alt="@Model.Name" class="img-thumbnail">
+    <p>We have only @Model.InStockAmount, hurry up</p>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-info" href="/Furnitures/Furniture/@Model.Id">Details</a>
+            </div>
+            <div class="col">
+                <a
+                    class="btn btn-warning"
+                    asp-controller="ShoppingCart" asp-action="AddToCart"
+                    asp-route-id="@Model.Id">
+                    Add to cart
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
